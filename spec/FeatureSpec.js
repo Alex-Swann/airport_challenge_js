@@ -9,6 +9,7 @@ describe('Land', function(){
   beforeEach(function(){
     airport = new Airport();
     plane = new Plane();
+    spyOn(Math, 'random').and.returnValue(0);
   });
 
   it('the plane should land at airport', function(){
@@ -24,6 +25,7 @@ describe('Take Off', function(){
   beforeEach(function(){
     airport = new Airport();
     plane = new Plane();
+    spyOn(Math, 'random').and.returnValue(0);
   });
 
   it('the plane should take off from airport', function(){
