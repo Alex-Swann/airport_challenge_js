@@ -11,6 +11,22 @@ describe('Airport', function(){
     plane = jasmine.createSpyObj('plane',['']);
   });
 
+  describe('checks for weather conditions', function() {
+    it('should check for stormy conditions', function() {
+      expect(airport._weather.isStormy()).toBeFalsy();
+    });
+
+    it('does not clear planes for take off when stormy', function() {
+      spyOn(airport._weather, 'isStormy').and.returnValue(true);
+      expect(function() { airport.takeOff(plane)} ).toThrowError('Plane cannot take off, weather is stormy.')
+    });
+
+    it('does not allow planes to land when stormy', function() {
+      spyOn(airport._weather, 'isStormy').and.returnValue(true);
+      expect(function() { airport.land(plane)} ).toThrowError('Plane cannot land, weather is stormy.')
+    });
+  });
+
   describe('#land', function(){
     it('should let a plane land',function(){
       expect(airport.land(plane)).toEqual('Plane has landed!');
