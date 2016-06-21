@@ -18,12 +18,12 @@ describe('Airport', function(){
 
     it('does not clear planes for take off when stormy', function() {
       spyOn(airport._weather, 'isStormy').and.returnValue(true);
-      expect(function() { airport.takeOff(plane)} ).toThrowError('Plane cannot take off, weather is stormy.')
+      expect(function() { airport.takeOff(plane); } ).toThrowError('Plane cannot take off, weather is stormy.');
     });
 
     it('does not allow planes to land when stormy', function() {
       spyOn(airport._weather, 'isStormy').and.returnValue(true);
-      expect(function() { airport.land(plane)} ).toThrowError('Plane cannot land, weather is stormy.')
+      expect(function() { airport.land(plane);} ).toThrowError('Plane cannot land, weather is stormy.');
     });
   });
 

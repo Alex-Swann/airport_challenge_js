@@ -34,7 +34,7 @@ describe('Take Off', function(){
   it('blocks take off when weather is stormy', function(){
     airport.land(plane);
     spyOn(airport._weather, 'isStormy').and.returnValue(true);
-    expect(function() { airport.takeOff(plane) }).toThrowError('Plane cannot take off, weather is stormy.');
+    expect(function() { airport.takeOff(plane); }).toThrowError('Plane cannot take off, weather is stormy.');
     expect(airport.hanger).toContain(plane);
   });
 
